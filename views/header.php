@@ -45,7 +45,11 @@ if(!empty($_GET['keyword'])) {
                         <ul class="dropdown-menu">
                             <li><a href="view_user.php?id=<?php echo $id ?>">Profile</a></li>
                             <li role="separator" class="divider"></li>
+                            <?php 
+                            if (empty($_SESSION['id'])) {
+                            ?>
                             <li><a href="login.php">Login</a></li>
+                            <?php } ?>
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
                     </li>

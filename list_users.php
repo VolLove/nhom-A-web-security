@@ -23,8 +23,13 @@ $users = $userModel->getUsers($params);
     <div class="container">
         <?php if (!empty($users)) {?>
             <div class="alert alert-warning" role="alert">
+                <?php 
+                $user = $userModel->findUserById($_SESSION['id']);
+                echo "User logged in: " . $user[0]['fullname'] . "\n" . $user[0]['id'];
+                ?>
+                <br>
                 List of users! <br>
-                Hacker: http://php.local/list_users.php?keyword=ASDF%25%22%3BTRUNCATE+banks%3B%23%23
+                Hacker: http://localhost/web-security/list_users.php?keyword=ASDF%25%22%3BTRUNCATE+banks%3B%23%23
             </div>
             <table class="table table-striped">
                 <thead>
