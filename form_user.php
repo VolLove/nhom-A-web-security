@@ -14,7 +14,14 @@ if (!empty($_GET['id'])) {
 
 
 if (!empty($_POST['submit'])) {
-
+    $token = $_POST['token'];
+    if (!$token || $token !== $_SESSION['token']) {
+        // show an error message
+        echo '<p class="error">Error: Invalid token</p>';
+        // return 405 http status code
+        header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+        exit;
+    }
     if (!empty($_id)) {
         $userModel->updateUser($_POST);
     } else {
@@ -61,6 +68,7 @@ if (!empty($_POST['submit'])) {
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                     <input type="hidden" name="version" value="0">
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? '' ?>">
                     <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>
                 </form>
             <?php } else { ?>

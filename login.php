@@ -17,6 +17,7 @@ if (!empty($_POST['submit'])) {
         $_SESSION['id'] = $user[0]['id'];
 
         $_SESSION['message'] = 'Login successful';
+        $_SESSION['token'] = bin2hex(random_bytes(12));
         header('location: list_users.php');
     }else {
         //Login failed
