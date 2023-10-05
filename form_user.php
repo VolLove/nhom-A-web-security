@@ -7,6 +7,8 @@ $userModel = new UserModel();
 $user = NULL; //Add new user
 $_id = NULL;
 
+date_default_timezone_set('Asia/Saigon');
+
 if (!empty($_GET['id'])) {
     $_id = $_GET['id'];
     $user = $userModel->findUserById($_id);//Update existing user
@@ -48,7 +50,8 @@ if (!empty($_POST['submit'])) {
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-
+                        <input type="hidden" name="old_updated_at" value="<?php echo $user[0]['updated_at'];?>">
+                        <input type="hidden" name="updated_at" value="<?php echo date('Y-m-d h:i:s a', time());?>">
                     <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>
                 </form>
             <?php } else { ?>

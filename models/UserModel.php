@@ -49,12 +49,21 @@ class UserModel extends BaseModel {
      * @return mixed
      */
     public function updateUser($input) {
+        $sql_old_updated_at_db = 'SELECT `updated_at` FROM users WHERE id = '.$input['id'];
+        $old_updated_at_db = $this->select($sql_old_updated_at_db);
         $sql = 'UPDATE users SET 
-                 name = "' . mysqli_real_escape_string(self::$_connection, $input['name']) .'", 
+                 name = "' . mysqli_real_escape_string(self::$_connection, $input['name']) .'",
+                 updated_at = "' . $input['updated_at'] .'", 
                  password="'. md5($input['password']) .'"
                 WHERE id = ' . $input['id'];
-
-        $user = $this->update($sql);
+        
+        if ($old_updated_at_db[0]['updated_at'] == $input['old_updated_at']) {
+            var_dump($old_updated_at_db[0]['updated_at']);
+            $user = $this->update($sql);
+        } else {
+            header('location: list_users.php?message=Error Timestamp');
+        }
+        
 
         return $user;
     }

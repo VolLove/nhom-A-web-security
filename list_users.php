@@ -25,6 +25,9 @@ $users = $userModel->getUsers($params);
             <div class="alert alert-warning" role="alert">
                 List of users! <br>
                 Hacker: http://php.local/list_users.php?keyword=ASDF%25%22%3BTRUNCATE+banks%3B%23%23
+                <?php if (!empty($_GET['message'])) {
+                    echo $_GET['message'];
+                } ?>
             </div>
             <table class="table table-striped">
                 <thead>
