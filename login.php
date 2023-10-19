@@ -61,12 +61,14 @@ if (!empty($_POST['submit'])) {
 
                         <div class="margin-bottom-25 input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
+                            <input id="login-username" type="text" class="form-control" name="username" value=""
+                                placeholder="username or email">
                         </div>
 
                         <div class="margin-bottom-25 input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                            <input id="login-password" type="password" class="form-control" name="password"
+                                placeholder="password">
                         </div>
 
                         <div class="margin-bottom-25">
@@ -77,7 +79,8 @@ if (!empty($_POST['submit'])) {
                         <div class="margin-bottom-25 input-group">
                             <!-- Button -->
                             <div class="col-sm-12 controls">
-                                <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" name="submit" value="submit"
+                                    class="btn btn-primary">Submit</button>
                                 <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
                             </div>
                         </div>
