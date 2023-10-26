@@ -27,6 +27,12 @@ abstract class BaseModel {
         return $result;
     }
 
+    protected function multi_query($sql) {
+
+        $result = self::$_connection->multi_query($sql);
+        return $result;
+    }
+
     /**
      * Select statement
      * @param $sql
