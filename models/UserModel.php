@@ -38,10 +38,12 @@ class UserModel extends BaseModel {
      * @return mixed
      */
     public function deleteUserById($id) {
-        $sql = 'DELETE FROM users WHERE id = '.$id;
-        return $this->delete($sql);
-
+        $sql = 'DELETE FROM users WHERE id = ?';
+        $params = [$id];
+        $this->delete($sql, $params);
     }
+    
+    
 
     /**
      * Update user
@@ -50,12 +52,22 @@ class UserModel extends BaseModel {
      */
     public function updateUser($input) {
         $sql = 'UPDATE users SET 
-                 name = "' . mysqli_real_escape_string(self::$_connection, $input['name']) .'", 
-                 password="'. md5($input['password']) .'"
-                WHERE id = ' . $input['id'];
-
-        $user = $this->update($sql);
-
+                 name = ?,
+                 fullname = ?,
+                 email = ?,
+                 password = ?
+                WHERE id = ?';
+    
+        $params = [
+            $input['name'],
+            $input['fullname'],
+            $input['email'],
+            md5($input['password']),
+            $input['id']
+        ];
+    
+        $user = $this->update($sql, $params);
+    
         return $user;
     }
 

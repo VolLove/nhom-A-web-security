@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `app_web1`
+-- Database: `vzhsqqin_web2`
 --
-CREATE DATABASE IF NOT EXISTS `app_web1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `app_web1`;
+CREATE DATABASE IF NOT EXISTS `vzhsqqin_web2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `vzhsqqin_web2`;
 
 -- --------------------------------------------------------
 
