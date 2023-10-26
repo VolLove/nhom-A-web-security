@@ -17,8 +17,12 @@ $users = $userModel->getUsers($params);
 <head>
     <title>Home</title>
     <?php include 'views/meta.php' ?>
+    <script type="text/javascript" src="public/js/antiview.js">
+        </script>
 </head>
+
 <body>
+    
     <?php include 'views/header.php'?>
     <div class="container">
         <?php if (!empty($users)) {?>
@@ -70,5 +74,6 @@ $users = $userModel->getUsers($params);
             </div>
         <?php } ?>
     </div>
+    
 </body>
 </html>

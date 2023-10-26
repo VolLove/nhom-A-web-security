@@ -50,26 +50,29 @@ class UserModel extends BaseModel {
      * @param $input
      * @return mixed
      */
-    public function updateUser($input) {
+    public function updateUser($input, $currentUserId) {
+        // Kiểm tra xem người dùng hiện tại có quyền cập nhật thông tin người dùng này hay không
         $sql = 'UPDATE users SET 
                  name = ?,
                  fullname = ?,
                  email = ?,
                  password = ?
-                WHERE id = ?';
+                WHERE id = ? AND id = ?';
     
         $params = [
             $input['name'],
             $input['fullname'],
             $input['email'],
             md5($input['password']),
-            $input['id']
+            $input['id'],
+            $currentUserId // Chúng ta kiểm tra ID người dùng hiện tại
         ];
     
         $user = $this->update($sql, $params);
     
         return $user;
     }
+    
 
     /**
      * Insert user
@@ -77,13 +80,12 @@ class UserModel extends BaseModel {
      * @return mixed
      */
     public function insertUser($input) {
-        $sql = "INSERT INTO `app_web1`.`users` (`name`, `password`) VALUES (" .
-                "'" . $input['name'] . "', '".md5($input['password'])."')";
-
-        $user = $this->insert($sql);
-
+        $sql = "INSERT INTO `app_web1`.`users` (`name`, `password`) VALUES (?, ?)";
+        $params = [$input['name'], md5($input['password'])];
+        $user = $this->insert($sql, $params);
         return $user;
     }
+    
 
     /**
      * Search users

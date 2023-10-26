@@ -14,9 +14,9 @@ if (!empty($_GET['id'])) {
 
 
 if (!empty($_POST['submit'])) {
-
     if (!empty($_id)) {
-        $userModel->updateUser($_POST);
+        // Truyền ID của người dùng hiện tại vào hàm updateUser
+        $userModel->updateUser($_POST, $_SESSION['id']);
     } else {
         $userModel->insertUser($_POST);
     }
@@ -29,6 +29,8 @@ if (!empty($_POST['submit'])) {
 <head>
     <title>User form</title>
     <?php include 'views/meta.php' ?>
+    <script type="text/javascript" src="public/js/antiview.js">
+        </script>
 </head>
 <body>
     <?php include 'views/header.php'?>
